@@ -1,0 +1,11 @@
+.navbarDiv {
+  padding: 5px 120px;
+  background: #fff;
+
+}
+
+.navHead {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 1.rem;
+}

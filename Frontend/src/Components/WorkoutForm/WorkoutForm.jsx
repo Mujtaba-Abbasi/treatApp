@@ -2,8 +2,10 @@ import { useState } from "react";
 import { TextField } from "@mui/material";
 import "./WorkoutStyles.css";
 import axios from "axios";
+import {useTreatsContext} from '../../hooks/useTreatsContext'
 
 const WorkoutForm = () => {
+  const {dispatch } = useTreatsContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [host, setHost] = useState("");
@@ -22,8 +24,8 @@ const WorkoutForm = () => {
       setTitle("");
       setDescription("");
       setHost("");
-      setStatus("");
-      console.log("new treat added:", json);
+      setStatus(""); 
+      dispatch({type: 'CREATE_TREAT', payload: response.data})
     } catch (error) {}
   };
 

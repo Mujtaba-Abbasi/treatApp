@@ -1,20 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Appbar, ToolBar } from '@mui/material'
 import "./NavbarStyles.css";
-import { Menu, Typography, MenuItem } from "@mui/material";
+import Signup from "../../pages/Sign up/Signup";
+import Login from "../../pages/Login/Login";
+import TreatForm from '../TreatForm/TreatForm';
+import { useLogOut } from '../../hooks/useLogOut'
 
 const Navbar = () => {
-  const pages = ["Login", "Sign up", "Add Item"];
+  const { logout } = useLogOut();
+
+  const handleClick = () => {
+    logout();
+  }
+
   return (
-    <div className="navbarDiv">
-      <Link className="navLinks" to="/">
-        <h2>Treats</h2>
-      </Link>
-      <div className="navButtons">
-        {pages.map((page) => <Link className="navLinks" to={`/{page}`} key={page} ><h4>{page}</h4></Link>
-        )}
-      </div>
-    </div>
+
+    <>
+      {/* <Appbar>
+        <ToolBar>
+          <Link className="navPages" to="/">
+            <h2>Treats</h2>
+          </Link>
+        </ToolBar>
+      </Appbar> */}
+      {/* <div className="navbarDiv">
+        <Link className="navPages" to="/">
+          <h2>Treats</h2>
+        </Link>
+        <nav>
+          <div>
+          </div>
+          <div className="navLinks">
+            <button onClick={handleClick}>Log out</button>
+            <Signup />
+            <Login />
+            <TreatForm />
+          </div>
+        </nav>
+      </div> */}
+    </>
   );
 };
 

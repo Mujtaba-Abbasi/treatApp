@@ -1,13 +1,11 @@
 import { useEffect} from "react";
 import axios from "axios";
-import {useTreatsContext} from '../hooks/useTreatsContext'
+import {useTreatsContext} from '../../hooks/useTreatsContext'
 
 import {Grid} from '@mui/material';
-import './Home.css'
 
 // components
-import WorkoutDetails from "../Components/WorkoutDetails/WorkoutDetails";
-import WorkoutForm from "../Components/WorkoutForm/WorkoutForm";
+import WorkoutDetails from "../../Components/TreatDetails/TreatDetails";
 
 export default function Home() {
   const {treats, dispatch} = useTreatsContext();
@@ -16,7 +14,7 @@ export default function Home() {
     const fetchTreats = async () => {
       try {
         const response = await axios.get("http://localhost:4000/api/treats");
-        console.log(response);
+        // console.log(response);
         if(response.status===200){
           dispatch({type: 'SET_TREATS', payload : response.data })
         }else{
@@ -32,14 +30,13 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div  className="home">
+    <div  style={{padding: '5px 20px'}}>
     <Grid container spacing={2} mt={2}>
       {treats &&
         treats.map((treat) => (
           <WorkoutDetails treat={treat} key={treat._id} />
         ))}
     </Grid>
-    <WorkoutForm/>
     </div>
   );
 }

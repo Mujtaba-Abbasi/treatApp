@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express');
 const treatRoute = require('./Ruotes/treat')
+const userRoute = require('./Ruotes/user')
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -16,12 +17,9 @@ app.use((req, res, next)=>{
     console.log(req.path, req.method);
     next();
 })
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-  });
 
 app.use('/api/treats',treatRoute);
+app.use('/api/user',userRoute);
 
 
 //*Connect to the DB

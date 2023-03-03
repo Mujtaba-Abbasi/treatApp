@@ -1,9 +1,9 @@
-import './WorkoutDetailsStyles.css'
+import './TreatDetailsStyles.css'
 import axios from 'axios';
 import {useTreatsContext} from '../../hooks/useTreatsContext'
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const WorkoutDetails = ({ treat }) => { 
+const TreatDetails = ({ treat }) => { 
   const {dispatch} = useTreatsContext();
 
   async function handleDelete(){
@@ -35,4 +35,4 @@ const WorkoutDetails = ({ treat }) => {
     )
   }
   
-  export default WorkoutDetails;
+  export default TreatDetails;
